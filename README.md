@@ -37,7 +37,7 @@ If you're using Rails, you need to add the strategy to your `Gemfile`:
 or you can pull them in directly from Github e.g.:
 
 ```ruby
-    gem 'omniauth-twitter', :git => 'https://github.com/cmply/omniauth-cmply.git'
+    gem 'omniauth-cmply', :git => 'https://github.com/cmply/omniauth-cmply.git'
 ```
 
 Once you've added the gem to your project, you need to add the following to your `config/initializers/omniauth.rb`:
