@@ -1,0 +1,7 @@
+.rvmrc
+.rbenv-version
+.bundle
+.idea
+.idea/*.*
+.DS_Store
+coverage/*.*
