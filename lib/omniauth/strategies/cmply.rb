@@ -1,9 +1,9 @@
-require 'omniauth-oauth'
+require 'omniauth-oauth2'
 require 'multi_json'
 
 module OmniAuth
   module Strategies
-    class Cmply < OmniAuth::Strategies::OAuth
+    class Cmply < OmniAuth::Strategies::OAuth2
       option :name, 'cmply'
       #option :client_options, {:authorize_path => '/oauth/authorize',:site => 'http://api.cmp.ly'}
       option :client_options, {:authorize_path => '/oauth/authorize',:site => 'http://api.cmply.local:8800'}
@@ -16,11 +16,7 @@ module OmniAuth
           :name => raw_info['name'],
           :location => raw_info['location'],
           :image => raw_info['profile_image_url'],
-          :description => raw_info['description'],
-          :urls => {
-            'Website' => raw_info['url'],
-            'Cmply' => 'http://cmp.ly/' + raw_info['screen_name'],
-          }
+          :description => raw_info['description']
         }
       end
 
