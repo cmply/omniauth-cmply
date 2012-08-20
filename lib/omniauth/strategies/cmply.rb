@@ -8,15 +8,17 @@ module OmniAuth
       #option :client_options, {:authorize_path => '/oauth/authorize',:site => 'http://api.cmp.ly'}
       option :client_options, {:authorize_path => '/oauth/authorize',:site => 'http://api.cmply.local:8800'}
 
-      uid { access_token.params[:user_id] }
+      uid { access_token.params[:_id] }
 
       info do
         {
-          :nickname => raw_info['screen_name'],
-          :name => raw_info['name'],
-          :location => raw_info['location'],
+          :nickname => raw_info['user_name'],
+          :name => raw_info['full_name'],
+          :first_name => raw_info['first_name'],
+          :last_name => raw_info['last_name'],
           :image => raw_info['profile_image_url'],
-          :description => raw_info['description']
+          :description => raw_info['bio'],
+          :email => raw_info['email']
         }
       end
 
@@ -25,7 +27,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= MultiJson.load(access_token.get('/1/account/verify_credentials.json').body)
+        @raw_info ||= MultiJson.load(access_token.get('/v2/users/verify-credentials.json').body)
       rescue ::Errno::ETIMEDOUT
         raise ::Timeout::Error
       end
