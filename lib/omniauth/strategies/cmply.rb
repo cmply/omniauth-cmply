@@ -8,7 +8,8 @@ module OmniAuth
       #option :client_options, {:authorize_path => '/oauth/authorize',:site => 'http://api.cmp.ly'}
       option :client_options, {:authorize_path => '/oauth/authorize',:site => 'http://api.cmply.local:8800'}
 
-      uid { access_token.params[:_id] }
+      #uid { access_token.params[:user_id] }
+      uid { raw_info['_id'] }
 
       info do
         {
