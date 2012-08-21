@@ -5,7 +5,8 @@ module OmniAuth
   module Strategies
     class Cmply < OmniAuth::Strategies::OAuth2
       option :name, 'cmply'
-      option :client_options, {:authorize_path => '/oauth/authorize',:site => 'https://api.cmp.ly'}
+      #option :client_options, {:authorize_path => '/oauth/authorize',:site => 'https://api.cmp.ly'}
+      option :client_options, {:authorize_path => '/oauth/authorize',:site => 'https://cmply-lb-04-475861862.us-east-1.elb.amazonaws.com'}
 
       #uid { access_token.params[:user_id] }
       uid { raw_info['_id'] }
