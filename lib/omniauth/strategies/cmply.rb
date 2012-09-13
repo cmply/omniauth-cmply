@@ -5,7 +5,10 @@ module OmniAuth
   module Strategies
     class Cmply < OmniAuth::Strategies::OAuth2
       option :name, 'cmply'
-      option :client_options, {:authorize_path => '/oauth/authorize',:site => 'https://api.cmp.ly'}
+      option :client_options, {
+                                  :authorize_path => '/oauth/authorize',
+                                  :site => ENV["RACK_ENV"].eql?("development") ? 'http://api.cmply.local:8800' : 'http://api.cmp.ly'
+      }
 
       #uid { access_token.params[:user_id] }
       uid { raw_info['_id'] }
