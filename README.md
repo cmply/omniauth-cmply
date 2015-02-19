@@ -1,5 +1,7 @@
 # OmniAuth CMP.LY
 
+[![Dependency Status](https://gemnasium.com/cmply/omniauth-cmply.svg)](https://gemnasium.com/cmply/omniauth-cmply)
+
 This gem contains the CMP.LY strategy for OmniAuth. CMP.LY uses the OAuth 2.0 flow.
 
 ## Installation
